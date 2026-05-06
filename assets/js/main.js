@@ -1,4 +1,4 @@
-// Main Scripts for ST-IMPT Jewelers
+// Main Scripts for STIMPT Jewelers
 
 document.addEventListener('DOMContentLoaded', () => {
   // Mobile Menu Toggle

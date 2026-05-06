@@ -192,7 +192,7 @@ function setupWhatsAppCheckout() {
 `;
     });
 
-    let message = `Hello ST-IMPT Jewelers, I want to place an order.
+    let message = `Hello STIMPT Jewelers, I want to place an order.
 
 *Customer Details:*
 Name: ${name}
