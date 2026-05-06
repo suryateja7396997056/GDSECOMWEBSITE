@@ -1,4 +1,4 @@
-// Main Scripts for GDS Jewellers
+// Main Scripts for ST-IMPT Jewelers
 
 document.addEventListener('DOMContentLoaded', () => {
   // Mobile Menu Toggle
@@ -59,7 +59,7 @@ function showToast(message) {
 
 // Global Cart Functions
 function getCart() {
-  const cartStr = localStorage.getItem('gds_cart');
+  const cartStr = localStorage.getItem('stimpt_cart');
   return cartStr ? JSON.parse(cartStr) : [];
 }
 
@@ -90,7 +90,7 @@ function addToCart(productId, quantity = 1) {
     });
   }
 
-  localStorage.setItem('gds_cart', JSON.stringify(cart));
+  localStorage.setItem('stimpt_cart', JSON.stringify(cart));
   updateCartCount();
   showToast("Product added to cart");
 }

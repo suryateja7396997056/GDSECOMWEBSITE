@@ -105,7 +105,7 @@ function updateCartItemQty(index, change) {
     if (cart[index].quantity <= 0) {
       cart.splice(index, 1);
     }
-    localStorage.setItem('gds_cart', JSON.stringify(cart));
+    localStorage.setItem('stimpt_cart', JSON.stringify(cart));
     updateCartCount();
     renderCartPage();
   }
@@ -115,7 +115,7 @@ function removeCartItem(index) {
   const cart = getCart();
   if (cart[index]) {
     cart.splice(index, 1);
-    localStorage.setItem('gds_cart', JSON.stringify(cart));
+    localStorage.setItem('stimpt_cart', JSON.stringify(cart));
     updateCartCount();
     renderCartPage();
     showToast("Item removed from cart");
@@ -192,7 +192,7 @@ function setupWhatsAppCheckout() {
 `;
     });
 
-    let message = `Hello GDS Jewellers, I want to place an order.
+    let message = `Hello ST-IMPT Jewelers, I want to place an order.
 
 *Customer Details:*
 Name: ${name}
