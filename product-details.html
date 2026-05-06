@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | GDS Jewellers</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">GDS Jewellers</a>
+            
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="collections.html">Collections</a>
+                <a href="products.html">Products</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            
+            <div class="header-icons">
+                <a href="https://wa.me/919876543210" class="icon-btn" target="_blank" title="WhatsApp">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                <a href="cart.html" class="icon-btn" title="Cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <div class="mobile-menu-btn">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Product Details Section -->
+    <section class="section-padding" style="min-height: 60vh;">
+        <div class="container">
+            
+            <a href="products.html" style="display: inline-block; margin-bottom: 20px; color: var(--text-grey-brown);">
+                <i class="fa-solid fa-arrow-left"></i> Back to Products
+            </a>
+
+            <div id="product-container">
+                <!-- Product content loaded dynamically -->
+                <div style="text-align: center; padding: 50px;">
+                    <p>Loading product details...</p>
+                </div>
+            </div>
+
+            <!-- Related Products -->
+            <div style="margin-top: 80px;" id="related-products-section" style="display: none;">
+                <h3 style="font-size: 2rem; margin-bottom: 30px; text-align: center;">Related Products</h3>
+                <div class="product-grid" id="related-grid">
+                    <!-- Loaded dynamically -->
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo" style="margin-bottom: 20px; display: block;">GDS Jewellers</a>
+                    <p>GDS Jewellers is a premium jewellery destination for high-quality gold, diamond, and bridal jewellery. We bring timeless elegance to every celebration.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="products.html">All Products</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Collections</h4>
+                    <ul class="footer-links">
+                        <li><a href="products.html?category=Bridal">Bridal</a></li>
+                        <li><a href="products.html?category=Diamond">Diamond</a></li>
+                        <li><a href="products.html?category=Gold">Gold</a></li>
+                        <li><a href="products.html?category=Kundan">Kundan</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-links">
+                        <li style="display: flex; gap: 10px;">
+                            <i class="fa-solid fa-location-dot" style="color: var(--primary-gold); margin-top: 5px;"></i>
+                            <span>123 Jewellery Bazaar, Main Street, City - 400001</span>
+                        </li>
+                        <li style="display: flex; gap: 10px;">
+                            <i class="fa-solid fa-phone" style="color: var(--primary-gold); margin-top: 5px;"></i>
+                            <span>+91 98765 43210</span>
+                        </li>
+                        <li style="display: flex; gap: 10px;">
+                            <i class="fa-solid fa-envelope" style="color: var(--primary-gold); margin-top: 5px;"></i>
+                            <span>info@gdsjewellers.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 GDS Jewellers. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a href="#" class="floating-wa">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="assets/js/products.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+            const container = document.getElementById('product-container');
+            const relatedSection = document.getElementById('related-products-section');
+            const relatedGrid = document.getElementById('related-grid');
+
+            if (!productId || isNaN(productId)) {
+                container.innerHTML = `<div style="text-align:center; padding: 50px;"><h2>Product not found.</h2><a href="products.html" class="btn btn-primary" style="margin-top: 20px;">Browse Products</a></div>`;
+                return;
+            }
+
+            const product = products.find(p => p.id === parseInt(productId));
+
+            if (!product) {
+                container.innerHTML = `<div style="text-align:center; padding: 50px;"><h2>Product not found.</h2><a href="products.html" class="btn btn-primary" style="margin-top: 20px;">Browse Products</a></div>`;
+                return;
+            }
+
+            // Update title
+            document.title = `${product.name} | GDS Jewellers`;
+
+            // WhatsApp Message
+            const OWNER_WHATSAPP_NUMBER = "919876543210";
+            const waMsg = `Hello GDS Jewellers, I would like to inquire about this product:\n\n*${product.name}*\nPrice: ₹${product.price.toLocaleString('en-IN')}\nCategory: ${product.category}\n\nCan you share more details?`;
+            const waUrl = `https://wa.me/${OWNER_WHATSAPP_NUMBER}?text=${encodeURIComponent(waMsg)}`;
+
+            // Render Product
+            container.innerHTML = `
+                <div class="product-details-grid">
+                    <div class="product-gallery">
+                        <img src="${product.image}" alt="${product.name}">
+                    </div>
+                    <div>
+                        <span class="pd-category">${product.category}</span>
+                        <h1 class="pd-title">${product.name}</h1>
+                        <div class="pd-price">${formatPrice(product.price)}</div>
+                        <p class="pd-desc">${product.description}</p>
+                        
+                        <ul class="pd-meta">
+                            <li><span>Material:</span> ${product.material}</li>
+                            <li><span>Weight:</span> ${product.weight}</li>
+                            <li><span>Status:</span> <span style="color: #27ae60; font-weight: 600;">${product.availability}</span></li>
+                        </ul>
+                        
+                        <div class="pd-actions">
+                            <div class="qty-selector">
+                                <button class="qty-btn" id="pd-qty-minus">-</button>
+                                <input type="number" id="pd-qty-input" class="qty-input" value="1" min="1" readonly>
+                                <button class="qty-btn" id="pd-qty-plus">+</button>
+                            </div>
+                            <button class="btn btn-primary" id="pd-add-cart" style="flex-grow: 1;">Add to Cart</button>
+                        </div>
+                        
+                        <a href="${waUrl}" target="_blank" class="btn btn-outline" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; border-color: #25D366; color: #25D366;">
+                            <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> WhatsApp Enquiry
+                        </a>
+                    </div>
+                </div>
+            `;
+
+            // Qty Logic
+            const qtyInput = document.getElementById('pd-qty-input');
+            document.getElementById('pd-qty-minus').addEventListener('click', () => {
+                if (qtyInput.value > 1) qtyInput.value = parseInt(qtyInput.value) - 1;
+            });
+            document.getElementById('pd-qty-plus').addEventListener('click', () => {
+                qtyInput.value = parseInt(qtyInput.value) + 1;
+            });
+
+            // Add to Cart
+            document.getElementById('pd-add-cart').addEventListener('click', () => {
+                addToCart(product.id, qtyInput.value);
+            });
+
+            // Related Products
+            const related = products.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
+            
+            if (related.length > 0) {
+                relatedSection.style.display = 'block';
+                let rHtml = '';
+                related.forEach(rp => {
+                    rHtml += `
+                        <div class="product-card">
+                            <div class="product-img-wrap">
+                                <span class="category-badge">${rp.category}</span>
+                                <a href="product-details.html?id=${rp.id}">
+                                    <img src="${rp.image}" alt="${rp.name}">
+                                </a>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">${rp.name}</h3>
+                                <div class="product-price">${formatPrice(rp.price)}</div>
+                                <div class="product-actions">
+                                    <a href="product-details.html?id=${rp.id}" class="btn btn-outline">Details</a>
+                                    <button class="btn btn-primary" onclick="addToCart(${rp.id})">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                relatedGrid.innerHTML = rHtml;
+            }
+        });
+    </script>
+</body>
+</html>

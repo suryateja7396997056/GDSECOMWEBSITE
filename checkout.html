@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | GDS Jewellers</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">GDS Jewellers</a>
+            
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="collections.html">Collections</a>
+                <a href="products.html">Products</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            
+            <div class="header-icons">
+                <a href="https://wa.me/919876543210" class="icon-btn" target="_blank" title="WhatsApp">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                <a href="cart.html" class="icon-btn" title="Cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <div class="mobile-menu-btn">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <div class="page-hero" style="padding: 40px 0;">
+        <div class="container">
+            <h1>Checkout</h1>
+        </div>
+    </div>
+
+    <!-- Checkout Section -->
+    <section class="section-padding">
+        <div class="container">
+            
+            <a href="cart.html" style="display: inline-block; margin-bottom: 20px; color: var(--text-grey-brown);">
+                <i class="fa-solid fa-arrow-left"></i> Back to Cart
+            </a>
+
+            <div class="checkout-layout">
+                
+                <!-- Billing Details Form -->
+                <div class="checkout-form-wrap">
+                    <h3 style="margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid var(--border-gold);">Customer Details</h3>
+                    <form id="checkout-form">
+                        <div class="form-group">
+                            <label for="c-name">Full Name *</label>
+                            <input type="text" id="c-name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="c-phone">Mobile Number *</label>
+                            <input type="tel" id="c-phone" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="c-address">Full Address *</label>
+                            <input type="text" id="c-address" class="form-control" required>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div class="form-group">
+                                <label for="c-city">City *</label>
+                                <input type="text" id="c-city" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="c-pincode">Pincode *</label>
+                                <input type="text" id="c-pincode" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="c-notes">Order Notes / Special Requests (Optional)</label>
+                            <textarea id="c-notes" class="form-control" placeholder="E.g., custom size, engraving details..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; background-color: #25D366; border-color: #25D366; font-size: 1.2rem; margin-top: 20px;">
+                            <i class="fa-brands fa-whatsapp"></i> Send Order on WhatsApp
+                        </button>
+                        <p style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: var(--text-grey-brown);">
+                            Clicking the button will open WhatsApp with your pre-filled order details. You can review the details before sending.
+                        </p>
+                    </form>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="order-summary-wrap">
+                    <h3 style="margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid var(--border-gold);">Your Order</h3>
+                    
+                    <div id="checkout-order-items">
+                        <!-- Items rendered by JS -->
+                    </div>
+                    
+                    <div class="summary-row" style="margin-top: 20px;">
+                        <span>Subtotal</span>
+                        <span id="checkout-subtotal" style="font-weight: 600;">₹0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <span style="color: #27ae60; font-weight: 600;">Free Delivery</span>
+                    </div>
+                    <div class="summary-row summary-total">
+                        <span>Grand Total</span>
+                        <span id="checkout-total" style="font-size: 1.5rem;">₹0</span>
+                    </div>
+                    
+                    <div style="margin-top: 30px; background-color: var(--bg-ivory); padding: 20px; border-radius: 4px; border-left: 4px solid var(--primary-gold);">
+                        <h4 style="margin-bottom: 10px;">Payment Policy</h4>
+                        <p style="font-size: 0.9rem;">We process all payments manually to ensure secure and verified transactions. Once you send the order via WhatsApp, our team will confirm the availability and share secure payment links/bank details.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo" style="margin-bottom: 20px; display: block;">GDS Jewellers</a>
+                    <p>GDS Jewellers is a premium jewellery destination for high-quality gold, diamond, and bridal jewellery. We bring timeless elegance to every celebration.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="products.html">All Products</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Collections</h4>
+                    <ul class="footer-links">
+                        <li><a href="products.html?category=Bridal">Bridal</a></li>
+                        <li><a href="products.html?category=Diamond">Diamond</a></li>
+                        <li><a href="products.html?category=Gold">Gold</a></li>
+                        <li><a href="products.html?category=Kundan">Kundan</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-links">
+                        <li style="display: flex; gap: 10px;">
+                            <i class="fa-solid fa-location-dot" style="color: var(--primary-gold); margin-top: 5px;"></i>
+                            <span>123 Jewellery Bazaar, Main Street, City - 400001</span>
+                        </li>
+                        <li style="display: flex; gap: 10px;">
+                            <i class="fa-solid fa-phone" style="color: var(--primary-gold); margin-top: 5px;"></i>
+                            <span>+91 98765 43210</span>
+                        </li>
+                        <li style="display: flex; gap: 10px;">
+                            <i class="fa-solid fa-envelope" style="color: var(--primary-gold); margin-top: 5px;"></i>
+                            <span>info@gdsjewellers.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 GDS Jewellers. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/products.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/cart.js"></script>
+</body>
+</html>
